@@ -19,6 +19,7 @@ const handleOptin = (query, res) => {
             text: 'You have now opted in for ' + query.text,
         }
         res.json(data);
+        res.send(data.text);
     }
 }
 
