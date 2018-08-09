@@ -1,4 +1,4 @@
-const token = '8dpisPCTkS9f2v5zj9uSKdpz';
+const token = 'OYK6hu327ChWOP3Wlp9IQiYA';
 
 module.exports = {
     slackAccessToken: token
