@@ -19,10 +19,26 @@ web.channels.list()
     }
   });
 
-  rtm.on('message', (message) => {
+rtm.on('message', (message) => {
+    console.log(message);
+    var text = message.text.toLowerCase();
+    if (text.includes("bos") || text.includes("boston")) {
+        rtm.sendMessage(`Hello, <@${message.user}>! You signed up for Boston Coffee Date`, message.channel)
+            .then((msg) => console.log(`Sent response message: ${msg}`))
+            .catch(console.error);
+    } else if (text.includes("jersey") || text.includes("nj")) {
+        rtm.sendMessage(`Hello, <@${message.user}>! You signed up for New Jersey Coffee Date`, message.channel)
+            .then((msg) => console.log(`Sent response message: ${msg}`))
+            .catch(console.error);
+    } else if (text.includes("new york") || text.includes("ny")) {
+        rtm.sendMessage(`Hello, <@${message.user}>! You signed up for New York Coffee Date`, message.channel)
+            .then((msg) => console.log(`Sent response message: ${msg}`))
+            .catch(console.error);
+    } else {
+        rtm.sendMessage(`<@${message.user}>, invalid location, please specify "boston", "new york", or "new jersey"`, message.channel)
+            .then((msg) => console.log(`Sent response message: ${msg}`))
+            .catch(console.error);
+    }
     // For structure of `event`, see https://api.slack.com/events/message
-    rtm.sendMessage(`Hello, <@${message.user}>!`, message.channel)
-    .then((msg) => console.log(`Sent response message: ${msg}`))
-    .catch(console.error);
     console.log(`(channel:${message.channel}) ${message.user} says: ${message.text}`);
   });
