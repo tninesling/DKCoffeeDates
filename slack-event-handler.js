@@ -1,3 +1,4 @@
+
 const handleEvent = (event) => {
     switch (event.type) {
         case 'app_mention':
@@ -11,6 +12,17 @@ const handleEvent = (event) => {
     }
 }
 
+const handleOptin = (query, res) => {
+    if (query.text) {
+        let data = {
+            response_type: 'in_channel',
+            text: 'You have now opted in for ' + query.text,
+        }
+        res.json(data);
+    }
+}
+
 module.exports = {
-    handleEvent
+    handleEvent,
+    handleOptin
 }
