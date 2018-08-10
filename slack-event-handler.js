@@ -76,9 +76,10 @@ const pairUsers = () => {
     var locations = ['boston', 'new_york', 'new_jersey'];
     for (i = 0; i < locations.length; i++) {
         if (arrays[location[i]].length % 2 == 1) {
-            var user1 = selectUser(arrays[location[i]]);
-            var user2 = selectUser(arrays[location[i]]);
-            var user3 = selectUser(arrays[location[i]]);
+            var locationArray = Array.from(new Set(arrays[location[i]])); //should remove duplicates
+            var user1 = selectUser(arrays[locationArray[i]]);
+            var user2 = selectUser(arrays[locationArray[i]]);
+            var user3 = selectUser(arrays[locationArray[i]]);
 
             sendDirectMessage(user1, 'Hi there, your date for coffee this ' + currentMonth() + 'is ' + user2 + ' and ' + user3);
             sendDirectMessage(user2, 'Hi there, your date for coffee this ' + currentMonth() + 'is ' + user1 + ' and ' + user3);
@@ -86,8 +87,8 @@ const pairUsers = () => {
         }
 
         while (userArray.length != 0) {
-            var user1 = selectUser(arrays[location[i]]);
-            var user2 = selectUser(arrays[location[i]]);
+            var user1 = selectUser(arrays[locationArray[i]]);
+            var user2 = selectUser(arrays[locationArray[i]]);
 
             sendDirectMessage(user1, 'Hi there, your date for coffee this ' + currentMonth() + 'is ' + user2);
             sendDirectMessage(user2, 'Hi there, your date for coffee this ' + currentMonth() + 'is ' + user1);
