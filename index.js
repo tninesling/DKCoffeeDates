@@ -1,6 +1,6 @@
 const { RTMClient,WebClient } = require('@slack/client');
-const {checkUserLocation} = require('./slack-event-handler');
-const fs = require('fs');
+const {checkUserLocation, addUserToJsonFile} = require('./slack-event-handler');
+
 
 const token = 'xoxb-414091595655-413066763106-YD3P4JJsp4xLa5RFoKPwlBrR';
 const web = new WebClient(token);
@@ -11,6 +11,7 @@ rtm.start();
 rtm.on('message', (message) => {
     
     checkUserLocation(message, rtm, web);
+    addUserToJsonFile(message);
     
   });
   const userArray = [
@@ -20,7 +21,4 @@ rtm.on('message', (message) => {
   ];
   const json = JSON.stringify(userArray);
 
-  fs.writeFile('users.json', userArray, (err) => {
-      if (err) throw err;
-      console.log('done');
-  })
+  

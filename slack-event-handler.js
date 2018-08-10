@@ -1,3 +1,4 @@
+const fs = require('fs');
 const handleEvent = (event) => {
     switch (event.type) {
         case 'app_mention':
@@ -70,6 +71,7 @@ const selectUser = (array) => {
     array.splice(index, 1);
     return user;
 }
+
 /*
 const pairUsers = () => {
     //read arrays from json 
@@ -95,7 +97,16 @@ const pairUsers = () => {
         };
     }
 }*/
+//add
+const addUserToJsonFile = (message) => {
+    fs.readFile('users.json','utf8', (err, data) => {
+        if (err) throw err;
+        const json = JSON.parse(data);
+        const bostonUsers = json['boston'];
+        bostonUsers.push(message.user);
+    })
+}
  
 module.exports = {
-    handleEvent, checkUserLocation, sendDirectMessage
+    handleEvent, checkUserLocation, sendDirectMessage, addUserToJsonFile
 }
