@@ -99,5 +99,5 @@ const pairUsers = (usersObj) => {
 }*/
  
 module.exports = {
-    handleEvent, checkUserLocation, sendDirectMessage
+    handleEvent, checkUserLocation, sendDirectMessage, pairUsers
 }
