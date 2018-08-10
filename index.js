@@ -13,11 +13,11 @@ rtm.on('message', (message) => {
     checkUserLocation(message, rtm, web);
     
   });
-  const userArray = [
-    boston = ['chelsey', 'cat', 'taylor', 'alex', 'jason'], 
-    new_york = ['dad','mom','friend'],
-    new_jersey =['conor','jack', 'jackie', 'christine'],
-  ];
+const userArray = {
+    boston: ['chelsey', 'cat', 'taylor', 'alex', 'jason'],
+    new_york: ['dad', 'mom', 'friend'],
+    new_jersey: ['conor', 'jack', 'jackie', 'christine'],
+};
   const json = JSON.stringify(userArray);
 
   fs.writeFile('users.json', userArray, (err) => {

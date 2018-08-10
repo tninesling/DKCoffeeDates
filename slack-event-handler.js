@@ -71,27 +71,29 @@ const selectUser = (array) => {
     return user;
 }
 /*
-const pairUsers = () => {
-    //read arrays from json 
+const pairUsers = (usersObj) => {
+    //read usersObj from json 
     var locations = ['boston', 'new_york', 'new_jersey'];
     for (i = 0; i < locations.length; i++) {
-        if (arrays[location[i]].length % 2 == 1) {
-            var locationArray = Array.from(new Set(arrays[location[i]])); //should remove duplicates
-            var user1 = selectUser(arrays[locationArray[i]]);
-            var user2 = selectUser(arrays[locationArray[i]]);
-            var user3 = selectUser(arrays[locationArray[i]]);
+        var locationUsersRaw = usersObj[location[i]];
+        var locationUsers = locationUsersRaw.filter((v,i) => locationUsersRaw.indexOf(v) === i)
+        if (locationUsers.length % 2 == 1) {
+            let locationArray = Array.from(new Set(locationUsers)); //should remove duplicates
+            var user1 = selectUser(locationUsers);
+            var user2 = selectUser(locationUsers);
+            var user3 = selectUser(locationUsers);
 
-            sendDirectMessage(user1, 'Hi there, your date for coffee this ' + currentMonth() + 'is ' + user2 + ' and ' + user3);
-            sendDirectMessage(user2, 'Hi there, your date for coffee this ' + currentMonth() + 'is ' + user1 + ' and ' + user3);
-            sendDirectMessage(user3, 'Hi there, your date for coffee this ' + currentMonth() + 'is ' + user2 + ' and ' + user1);
+            sendDirectMessage(user1, 'Hi there, your date for coffee this ' + currentMonth() + ' is <@${user2}> and <@${user3}>');
+            sendDirectMessage(user2, 'Hi there, your date for coffee this ' + currentMonth() + ' is <@${user1}> and <@${user3}>');
+            sendDirectMessage(user3, 'Hi there, your date for coffee this ' + currentMonth() + ' is <@${user2}> and <@${user1}>');
         }
 
-        while (userArray.length != 0) {
-            var user1 = selectUser(arrays[locationArray[i]]);
-            var user2 = selectUser(arrays[locationArray[i]]);
+        while (locationUsers.length != 0) {
+            var user1 = selectUser(locationUsers);
+            var user2 = selectUser(locationUsers);
 
-            sendDirectMessage(user1, 'Hi there, your date for coffee this ' + currentMonth() + 'is ' + user2);
-            sendDirectMessage(user2, 'Hi there, your date for coffee this ' + currentMonth() + 'is ' + user1);
+            sendDirectMessage(user1, 'Hi there, your date for coffee this ' + currentMonth() + ' is <@${user2}>');
+            sendDirectMessage(user2, 'Hi there, your date for coffee this ' + currentMonth() + ' is <@${user1}>');
         };
     }
 }*/
