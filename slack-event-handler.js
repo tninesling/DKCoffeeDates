@@ -65,8 +65,8 @@ const sendDirectMessage = (user, msgText) => {
 }
 
 const selectUser = (array) => {
-    index = Math.floor(Math.random() * array.length);
-    user = array[index];
+    var index = Math.floor(Math.random() * array.length);
+    var user = array[index];
     array.splice(index, 1);
     return user;
 }
@@ -97,5 +97,5 @@ const pairUsers = () => {
 }*/
  
 module.exports = {
-    handleEvent, checkUserLocation
+    handleEvent, checkUserLocation, sendDirectMessage
 }
